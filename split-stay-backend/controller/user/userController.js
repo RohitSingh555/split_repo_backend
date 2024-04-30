@@ -1,7 +1,7 @@
 import userModel from "../../model/userModel/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import userExperienceModel from "../../model/userModel/userModel/userExperience.js";
+import userExperienceModel from "../../model/userModel/userExperience.js";
 import AuthSchema from "../../model/userModel/authModel.js";
 
 export const registerUser = async (req, res) => {

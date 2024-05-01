@@ -21,8 +21,8 @@ export const protect = asyncHandler(async (req, res, next) => {
       next();
     } catch (err) {
       res.status(401).json({
-        sucess: false,
-        massage: "Not Authorized, Token Failed",
+        success: false,
+        message: "Not Authorized, Token Failed",
       });
       throw new Error("Not Authorized, Token Failed");
     }
@@ -30,8 +30,8 @@ export const protect = asyncHandler(async (req, res, next) => {
 
   if (!token) {
     res.status(401).json({
-      sucess: false,
-      massage: "Not Authorized To Access This Route",
+      success: false,
+      message: "Not Authorized To Access This Route",
     });
     throw new Error("Not Authorized To Access This Route");
   }

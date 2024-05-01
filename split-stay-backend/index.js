@@ -44,8 +44,6 @@ app.use(
   })
 );
 
-// Initialize passport
-
 // app.use(
 //   passport.session({
 //     secret: "key",

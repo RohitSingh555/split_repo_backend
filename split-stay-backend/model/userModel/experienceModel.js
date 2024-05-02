@@ -37,7 +37,9 @@ const experienceSchema = new mongoose.Schema(
       type: Number,
     },
     duration: {
-      type: String,
+      startDate: Date,
+      endDate: Date,
+      key: String,
     },
     createrAvator: {
       type: String,

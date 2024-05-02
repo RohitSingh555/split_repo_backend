@@ -2,15 +2,41 @@ import experienceModel from "../../model/userModel/experienceModel.js";
 
 export const experience = async (req, res) => {
   try {
-    req.body.createdBy = req.id;
-    const newExperience = await experienceModel.create(req.body);
+    // Check if the request contains an id parameter
+    if (req.params.id) {
+      // Editing existing experience
+      const updatedExperience = await experienceModel.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true }
+      );
 
-    return res.status(201).json({
-      message: "User Experience Data created successfully",
-      success: true,
-      status: "success",
-      data: newExperience,
-    });
+      if (!updatedExperience) {
+        return res.status(404).json({
+          message: "Experience not found",
+          success: false,
+          status: "error",
+        });
+      }
+
+      return res.status(200).json({
+        message: "User Experience Data updated successfully",
+        success: true,
+        status: "success",
+        data: updatedExperience,
+      });
+    } else {
+      // Creating new experience
+      req.body.createdBy = req.id;
+      const newExperience = await experienceModel.create(req.body);
+
+      return res.status(201).json({
+        message: "User Experience Data created successfully",
+        success: true,
+        status: "success",
+        data: newExperience,
+      });
+    }
   } catch (error) {
     console.log(error);
     return res.status(500).json({

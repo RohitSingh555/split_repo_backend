@@ -26,6 +26,7 @@ router
   .post("/userExperience", userExperience)
   .put("/userExperienceUpdate", userExperienceUpdate);
 router.post("/userExperienceForm", protect, experience);
+router.put("/userExperienceForm/:id", protect, experience);
 router.delete("/delete/experience/:id", deleteExperience);
 router.get("/experience/:id", getExperienceById);
 router.get("/experiences", getAllExperiences);
